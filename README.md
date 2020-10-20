@@ -1,8 +1,8 @@
 # FDR High School - AP CS A
 
-## Last Name: 
-## First Name: 
-## GitHub Username:
+## Last Name: Hlaing
+## First Name: Wai
+## GitHub Username: Jupiternerd
 
 
 ### General Workflow: 
