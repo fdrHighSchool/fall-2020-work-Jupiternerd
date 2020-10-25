@@ -1,55 +1,56 @@
-//GroupMates: Wai Hlaing, Xin Bao Chen
+/* Author: Wai Hlaing
+   Java 07. Temperature.java
+   AP CS A
+*/
+
+import java.util.*;
 
 class Main {
+
   public static void main(String[] args) {
-   rect(5, 5);
-   System.out.println("====================");
-   rect(2, 4);
-   System.out.println("====================");
-   rowNums(3);
-   System.out.println("====================");
-   tri();
-   System.out.println("====================");
-   numberTri();
+    setup();
   }
+  public static void setup() {
 
-  public static void rect(int numOfRows, int perRow) {
-        for (int row = 0; row < numOfRows; row++){
-      for (int col = 0; col < perRow; col++){
-        System.out.print("* ");
-      }
-      System.out.println();
-    }
-  }
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Hello, insert input and output options.\n(1) Celcius to Fahrenheit\n(2) Fahrenheit to Celcius");
 
-    public static void rowNums(int Maxrows) {
-        for (int row = 0; row < Maxrows; row++){
-      for (int col = 0; col < 6; col++){
-        System.out.printf("%d ", row + 1);
-      }
-      System.out.println();
-    }
-  }
-public static void tri(){
-    for(int row = 0; row < 4; row++){
-      for(int col = 0;col <= row; col++){
-        System.out.print("*");
-      }
-      System.out.println();
-    }
-}
+    int choice;
+    choice = sc.nextInt();
+    //System.out.println(choice);
 
 
-  public static void numberTri(){
-    //Coppied this from slack as it was a better
-  for (int row = 5; row > 0; row--){
-    for (int blanks = 1; blanks < row; blanks++){
-      System.out.print(" ");
-    }
-    for (int num = 0; num < 6 - row; num++){
-      System.out.print(6 - row);
-    }
-    System.out.println();
+    Temp(choice, sc);
   }
-  }
+
+    public static void Temp(int choice, Scanner sc) {
+
+double from;
+
+double result;
+
+if (choice > 2) setup();
+
+    System.out.println(choice == 1? "Input Celcius": "Input Fahrenheit.");
+from = sc.nextInt();
+
+
+   if (choice == 1) {
+result = (from * 9/5) + 32;
+
+System.out.printf("[%.1f] degree Celcius to [%.1f] degree Fahrenheit.", from, result);
+   } else if (choice == 2) {
+result = (from - 32) * 5/9;
+
+System.out.printf("[%.1f] degree Fahrenheit to [%.1f] degree Celcius.", from, result);
+
+   }
+
+
+
+
+
+
+    }
+
 }
