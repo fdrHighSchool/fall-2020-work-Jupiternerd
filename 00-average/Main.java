@@ -6,7 +6,7 @@ class Main {
 
     public static void main(String[] args)  {
    Scanner sc=new Scanner(System.in);
-   int y = 0;
+   int y = 0; //bucket
    int i = 0;
    System.out.println("# of grades?");
    int z = sc.nextInt();
