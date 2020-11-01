@@ -44,10 +44,10 @@ int ans;
       Pattern wholeWithFractionP, justFractionP, unoDigitP, operatorP;
       Matcher mF, jF, dF, op;
       //List<String> parsedEquation = new ArrayList<>();
-
-      wholeWithFractionP = Pattern.compile("([1-9]*)_([0-9]*)\\/([0-9]*)"); //([1-9])*_([1-9][0-9])*\\/([1-9][0-9])*
-      justFractionP = Pattern.compile("([0-9])*\\/([0-9])*"); //([1-9][0-9])*\\/([1-9][0-9])*
-      unoDigitP = Pattern.compile("[0-9]*");
+      //-? ***VERY IMPORTANT IS A negative boy
+      wholeWithFractionP = Pattern.compile("(-?[1-9]*)_(-?[0-9]*)\\/(-?[0-9]*)"); //([1-9])*_([1-9][0-9])*\\/([1-9][0-9])*
+      justFractionP = Pattern.compile("(-?[0-9])*\\/(-?[0-9])*"); //([1-9][0-9])*\\/([1-9][0-9])*
+      unoDigitP = Pattern.compile("-?[0-9]*");
       operatorP = Pattern.compile("[\\+\\-\\*\\/]");
 
 
@@ -67,7 +67,8 @@ int ans;
        dF = unoDigitP.matcher(x);
        op = operatorP.matcher(x);
        int whole, nom, denom;
-       String operator;
+       String operator = null;
+
 
        if (mF.matches()) {
 
@@ -89,8 +90,9 @@ int ans;
        if (jF.matches()) System.out.println(x + "its just a pure frac");
        if (dF.matches()) System.out.println(x + "its just a pure digit");
        if (op.matches()) System.out.println(x + "its just an operator");
+ //ArithmeticException("e");
 
-
+       if(operator == null) throw new ArithmeticException("Found no Operator!");
 
 
 
@@ -104,6 +106,9 @@ int ans;
 
 
       }
+      //Error handling
+
+
       }
 
 
@@ -130,6 +135,7 @@ int ans;
      * @param b - Second integer.
      * @return The GCD.
      */
+
     public int greatestCommonDivisor(int a, int b){
 
     ans = 0;
