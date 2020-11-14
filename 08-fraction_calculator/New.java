@@ -370,7 +370,7 @@ class New extends Helpers {
                                 System.out.println(op);
 
 
-                                finalEquationArrayList.add(op.toString());
+                                finalEquationArrayList.add(op);
 
 
                                 break;
