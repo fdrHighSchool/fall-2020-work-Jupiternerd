@@ -91,18 +91,11 @@ class Main extends Helpers {
                 markIndex = multiplyIndex;
                 operator = (Module) equation.get(markIndex - 1);
 
-                //            System.out.println(markIndex + "DID IT CHANGE");
+                //System.out.println(markIndex + "DID IT CHANGE");
                 operand = (Module) equation.get(markIndex + 1);
 
-                num = operator.numerator * operand.numerator;
-                denom = operator.denominator * operator.denominator;
 
                 mod = (Module) multiplyFractions(operator, operand);
-
-
-                mod.setFraction(num, denom);
-
-
 
                 equation.set(markIndex, mod);
 
@@ -170,14 +163,7 @@ class Main extends Helpers {
             //            System.out.println(markIndex + "DID IT CHANGE");
             operand = (Module) equation.get(markIndex + 1);
 
-            num = operator.numerator * operand.numerator;
-            denom = operator.denominator * operator.denominator;
-
             mod = (Module) multiplyFractions(operator, operand);
-
-
-            mod.setFraction(num, denom);
-
 
 
             equation.set(markIndex, mod);
@@ -355,7 +341,7 @@ class Main extends Helpers {
         ArrayList < Pattern > bigRegex = new ArrayList < > ();
         ArrayList finalEquationArrayList = new ArrayList < > ();
 
-        wholeWithFractionP = Pattern.compile("(-?[1-9]*)_(-?[0-9]*)\\/(-?[0-9]*)"); //([1-9])*_([1-9][0-9])*\\/([1-9][0-9])*
+        wholeWithFractionP = Pattern.compile("(-?[1-9]+)_(-?[0-9]+)\\/(-?[0-9]+)"); //([1-9])*_([1-9][0-9])*\\/([1-9][0-9])*
         justFractionP = Pattern.compile("(-?[0-9]+)\\/(-?[0-9]+)"); //([1-9][0-9])*\\/([1-9][0-9])*
         unoDigitP = Pattern.compile("(-?[\\d]+)");
         operatorP = Pattern.compile("([*]|[-]|[+]|[/])"); //dont use / yet
@@ -386,6 +372,7 @@ class Main extends Helpers {
                 matcher = pattern.matcher(toCheck);
                 if (matcher.matches()) {
                     //System.out.println(matcher.group(1).replace("-", "a"));
+                    
 
                     switch (patternCount) {
 
@@ -396,7 +383,19 @@ class Main extends Helpers {
                             nom = Integer.parseInt(matcher.group(2));
                             denom = Integer.parseInt(matcher.group(3));
 
-                            nom = nom + (denom * whole);
+                            if (whole < 0)  { nom = -1 * Math.abs(nom + Math.abs(denom * whole));
+                            System.out.println("neg");} else {
+
+                                nom = nom + (denom * whole);
+
+                            }
+
+                            
+
+                            
+                            
+                            
+                            System.out.println(nom + "/"+ denom + " : WHOLE NUMER AND FRAc");
                             mod = new Module("fractions");
                             mod.setFraction(nom, denom);
 
@@ -410,6 +409,8 @@ class Main extends Helpers {
 
                             nom = Integer.parseInt(matcher.group(1));
                             denom = Integer.parseInt(matcher.group(2));
+
+                            System.out.println(toCheck + " : FRACTION");
 
                             mod = new Module("fractions");
                             mod.setFraction(nom, denom);
@@ -523,7 +524,7 @@ class Helpers {
         int oppedDe = opped.denominator;
 
     
-        int numFin = (opNum * oppedDe) + (oppedNum * opDe);
+        int numFin = opNum*oppedDe + oppedNum*opDe;
         int denomFin = opDe * oppedDe;
 
         Module mod = new Module("fractions");
@@ -557,7 +558,8 @@ class Helpers {
         int oppedNum = opped.numerator;
         int oppedDe = opped.denominator;
 
-        int numFin = (opNum * oppedDe) - (oppedNum * opDe);
+        int numFin = opNum*oppedDe - oppedNum*opDe;
+        
         int denomFin = opDe * oppedDe;
 
         Module mod = new Module("fractions");
@@ -588,7 +590,7 @@ class Helpers {
 
 
         int numFin = opNum * oppedNum;
-        int denomFin = opDe * opDe;
+        int denomFin = opDe * oppedDe;
 
         //System.out.println(numFin);
 
@@ -689,11 +691,11 @@ class Helpers {
         num = A.numerator;
         denom = A.denominator;
 
-        whole = Math.floorDiv(num, denom);
-        num = num - (whole * denom);
+        whole = num / denom;
+        num = num % denom;
 
 
-        ansString = whole + "_" + num + "/" + denom;
+        ansString = whole + "_" + num + "/" + Math.abs(denom);
 
 
 
