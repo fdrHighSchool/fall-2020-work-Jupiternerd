@@ -383,11 +383,10 @@ class Main extends Helpers {
                             nom = Integer.parseInt(matcher.group(2));
                             denom = Integer.parseInt(matcher.group(3));
 
-                            if (whole < 0)  { nom = -1 * Math.abs(nom + Math.abs(denom * whole));
-                            System.out.println("neg");} else {
-
+                            if (whole < 0)  { 
+                                nom = -1 * Math.abs(nom + Math.abs(denom * whole));
+                            } else {
                                 nom = nom + (denom * whole);
-
                             }
 
                             
@@ -395,7 +394,7 @@ class Main extends Helpers {
                             
                             
                             
-                            System.out.println(nom + "/"+ denom + " : WHOLE NUMER AND FRAc");
+
                             mod = new Module("fractions");
                             mod.setFraction(nom, denom);
 
@@ -410,7 +409,6 @@ class Main extends Helpers {
                             nom = Integer.parseInt(matcher.group(1));
                             denom = Integer.parseInt(matcher.group(2));
 
-                            System.out.println(toCheck + " : FRACTION");
 
                             mod = new Module("fractions");
                             mod.setFraction(nom, denom);
@@ -622,8 +620,6 @@ class Helpers {
         int numFin = opNum * oppedDe;
         int denomFin = opDe * oppedNum;
 
-        System.out.println(numFin);
-        System.out.println(denomFin);
 
         Module mod = new Module("fractions");
         mod.setFraction(numFin, denomFin);
