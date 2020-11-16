@@ -604,7 +604,7 @@ class Helpers {
      * @see Module class for return and params;
      * @param oper | Fractiong operating;
      * @param opped | Fraction getting operated;
-     * @return Module
+     * @return Module that has been divided;
      */
     public static Module divideFractions(Module oper, Module opped) {
 
@@ -680,7 +680,12 @@ class Helpers {
 
     }
 
-
+    /**
+     * @see Module for object class module.
+     * @param A | Module A, numerator and denominator are the properties.
+     * @return String of whole number with numerator and denominator Example: Comes in as 20/3, leaves as 6_2/3;
+     * Converts a fraction of improper nature into a mixed fraction. Look above for example.
+     */
     public static String mixedFrac(Module A) {
         String ansString;
         int num, denom, whole;
@@ -690,10 +695,7 @@ class Helpers {
         whole = num / denom;
         num = num % denom;
 
-
         ansString = whole + "_" + num + "/" + Math.abs(denom);
-
-
 
         return ansString;
 
