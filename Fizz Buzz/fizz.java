@@ -35,7 +35,7 @@ class Main {
     public static void fizzBuzz(int i) {
         boolean fizzFlag, buzzFlag;
 
-        int z = 0;
+        int z = 0; //keepst track of our position and also is for seeing if its fizzing or buzzin.
         do {
             z++; //Increase z by one every time so it actually progresses the loop forward.
           fizzFlag = (z % 3 == 0 ?  true : false);
