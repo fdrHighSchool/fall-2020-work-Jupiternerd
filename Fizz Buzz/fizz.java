@@ -4,7 +4,7 @@
  * Work for fdrhs apcsa
  */
 
-import java.util.*;
+import java.util.Scanner;
 
 class Main {
 
@@ -38,8 +38,8 @@ class Main {
         int z = 0; //keepst track of our position and also is for seeing if its fizzing or buzzin.
         do {
             z++; //Increase z by one every time so it actually progresses the loop forward.
-          fizzFlag = (z % 3 == 0 ?  true : false);
-          buzzFlag = (z % 5 == 0 ? true : false);
+            fizzFlag = (z % 3 == 0);
+            buzzFlag = (z % 5 == 0);
           /**
            * A lot to unpack:
            * Lets only focus on the conditional fizzFlag and buzzFlag;
