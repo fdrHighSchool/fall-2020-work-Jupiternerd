@@ -1,9 +1,11 @@
+
+
 import java.util.regex.Pattern;
 import java.util.*;
 import java.util.regex.Matcher;
 
 
-class Characters {
+public class FicCharacters {
     String name, bio, dOb, gender;
     Integer age = 0;
     /**
@@ -15,7 +17,7 @@ class Characters {
      * 
      */
 
-    public Characters(String name, String bio, String dOb, String gender) {
+    public FicCharacters(String name, String bio, String dOb, String gender) {
         this.name = name;
         this.bio = bio;
         this.dOb = dOb;
